@@ -11,11 +11,9 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a routerLink="/dashboard">Home</a></li>
-        <li><a routerLink="/dashboard">Events</a></li>
-        <li><a routerLink="/dashboard">Activities</a></li> 
       </ul>
       <ul class="nav navbar-nav navbar-right" *ngIf="!authenticated">
-          <li><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <!--<li><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
           <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" *ngIf="authenticated">

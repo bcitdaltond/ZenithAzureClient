@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       "http://zenithsocietycore.azurewebsites.net/connect/token",
        data,
        {headers: headers}
-    ).map(res => res.json()).subscribe(data => {console.log(data), localStorage.setItem('Usertoken',data.access_token), localStorage.setItem('Username', Username)/*, location.reload()*/});
+    ).map(res => res.json()).subscribe(data => {console.log(data), localStorage.setItem('Usertoken',data.access_token), localStorage.setItem('Username', Username), location.reload()});
     //.map(res => res.json()).subscribe(data => { this.token = data.access_token});
 
     console.log("Recieved Token");
@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('Usertoken');
+    localStorage.removeItem('time');
     this.authenticated = false;
     location.reload();
   }

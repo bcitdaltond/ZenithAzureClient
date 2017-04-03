@@ -5,49 +5,110 @@
 <div style="text-align: center">
   <div *ngIf="authenticated" class="col-xs-12">
     <div class="text-left col-sm-6">
-      <button class="btn btn-default">Previous</button>
+      <button (click)="prev();" class="btn btn-default">Previous</button>
     </div>
     <div class="text-right col-sm-6">
-      <button class="btn btn-default">Next</button>
+      <button (click)="next();" class="btn btn-default">Next</button>
     </div>
   </div>
-  <table *ngIf="events" class="table table-hover">
-    <thead>
-      <tr>
-        <th>ActivityId</th>
-        <th>CreatedBy</th>
-        <th>CreationDate</th>
-        <th>End</th>
-        <th>EventId</th>
-        <th>IsActive</th>
-        <th>Start</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let e of events; let i=index;"> 
-         <td>{{e.ActivityId}}</td>
-         <td>{{e.CreatedBy}}</td>
-         <td>{{e.CreationDate}}</td>
-         <td>{{e.End}}</td>
-         <td>{{e.EventId}}</td>
-         <td>{{e.IsActive}}</td>
-         <td>{{e.Start}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <button class="btn btn-default" (click)="printEvents()">Log Events</button>
-  <button class="btn btn-default" (click)="printToken()">Log Token</button>
-
-  <table *ngIf="events" class="table table-hover">
-      <tbody *ngFor="let e of events; let i=index;">
+  <table *ngIf="monday" class="table table-hover">
+      <thead>
         <tr style="background-color: dodgerblue">
-          <th colspan="2" style="text-align: center">{{e.CreationDate}}</th>
+          <th colspan="3" style="text-align: center">{{monday_date}}</th>
         </tr>
+      </thead>
+      <tbody *ngFor="let d of monday; let i=index;">
         <tr> 
-          <td>{{e.Start}}</td>
-          <td>{{e.ActivityId}}</td>
+          <td>{{d.Start}}</td>
+          <td>{{d.End}}</td>
+          <td>{{d.ActivityId}}</td>
         </tr>
       </tbody>
-
   </table>
+  <table *ngIf="tuesday" class="table table-hover">
+      <thead>
+        <tr style="background-color: dodgerblue">
+          <th colspan="3" style="text-align: center">{{tuesday_date}}</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let d of tuesday; let i=index;">
+        <tr> 
+          <td>{{d.Start}}</td>
+          <td>{{d.End}}</td>
+          <td>{{d.ActivityId}}</td>
+        </tr>
+      </tbody>
+  </table>
+  <table *ngIf="wednesday" class="table table-hover">
+      <thead>
+        <tr style="background-color: dodgerblue">
+          <th colspan="3" style="text-align: center">{{wednesday_date}}</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let d of wednesday; let i=index;">
+        <tr> 
+          <td>{{d.Start}}</td>
+          <td>{{d.End}}</td>
+          <td>{{d.ActivityId}}</td>
+        </tr>
+      </tbody>
+  </table>
+  <table *ngIf="thursday" class="table table-hover">
+      <thead>
+        <tr style="background-color: dodgerblue">
+          <th colspan="3" style="text-align: center">{{thursday_date}}</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let d of thursday; let i=index;">
+        <tr> 
+          <td>{{d.Start}}</td>
+          <td>{{d.End}}</td>
+          <td>{{d.ActivityId}}</td>
+        </tr>
+      </tbody>
+  </table>
+  <table *ngIf="friday" class="table table-hover">
+      <thead>
+        <tr style="background-color: dodgerblue">
+          <th colspan="3" style="text-align: center">{{friday_date}}</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let d of friday; let i=index;">
+        <tr> 
+          <td>{{d.Start}}</td>
+          <td>{{d.End}}</td>
+          <td>{{d.ActivityId}}</td>
+        </tr>
+      </tbody>
+  </table>
+  <table *ngIf="saturday" class="table table-hover">
+      <thead>
+        <tr style="background-color: dodgerblue">
+          <th colspan="3" style="text-align: center">{{saturday_date}}</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let d of saturday; let i=index;">
+        <tr> 
+          <td>{{d.Start}}</td>
+          <td>{{d.End}}</td>
+          <td>{{d.ActivityId}}</td>
+        </tr>
+      </tbody>
+  </table>
+  <table *ngIf="sunday" class="table table-hover">
+      <thead>
+        <tr style="background-color: dodgerblue">
+          <th colspan="3" style="text-align: center">{{sunday_date}}</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let d of sunday; let i=index;">
+        <tr> 
+          <td>{{d.Start}}</td>
+          <td>{{d.End}}</td>
+          <td>{{d.ActivityId}}</td>
+        </tr>
+      </tbody>
+  </table>
+  <!--<button class="btn btn-default" (click)="printEvents()">Log Events</button>-->
+  <!--<button class="btn btn-default" (click)="printToken()">Log Token</button>-->
 </div>

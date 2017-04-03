@@ -23,6 +23,7 @@ export class AppComponent {
 
   logout() {
     localStorage.removeItem('Usertoken');
+    localStorage.removeItem('time');
     this.authenticated = false;
     location.reload();
   }
