@@ -14,9 +14,13 @@
         <li><a routerLink="/dashboard">Events</a></li>
         <li><a routerLink="/dashboard">Activities</a></li> 
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <ul class="nav navbar-nav navbar-right" *ngIf="!authenticated">
+          <li><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="authenticated">
+        <li><a>Logged in as... {{username}}</a></li>
+        <li><a (click)="logout();">Logout</a></li>
       </ul>
     </div>
   </div>

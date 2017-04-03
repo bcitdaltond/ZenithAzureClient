@@ -3,17 +3,16 @@
 </h3>
 
 <div style="text-align: center">
+  <div *ngIf="authenticated" class="col-xs-12">
+    <div class="text-left col-sm-6">
+      <button class="btn btn-default">Previous</button>
+    </div>
+    <div class="text-right col-sm-6">
+      <button class="btn btn-default">Next</button>
+    </div>
+  </div>
   <table *ngIf="events" class="table table-hover">
     <thead>
-      <tr>
-        <th style="text-align: left"><button class="btn btn-default" >Previous</button></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th style="text-align: right"><button class="btn btn-default" >Next</button></th>
-      </tr>
       <tr>
         <th>ActivityId</th>
         <th>CreatedBy</th>
@@ -38,4 +37,17 @@
   </table>
   <button class="btn btn-default" (click)="printEvents()">Log Events</button>
   <button class="btn btn-default" (click)="printToken()">Log Token</button>
+
+  <table *ngIf="events" class="table table-hover">
+      <tbody *ngFor="let e of events; let i=index;">
+        <tr style="background-color: dodgerblue">
+          <th colspan="2" style="text-align: center">{{e.CreationDate}}</th>
+        </tr>
+        <tr> 
+          <td>{{e.Start}}</td>
+          <td>{{e.ActivityId}}</td>
+        </tr>
+      </tbody>
+
+  </table>
 </div>

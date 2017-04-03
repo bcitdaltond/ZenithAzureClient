@@ -10,7 +10,8 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  Username:string;
+  Password:string;
   constructor(private http: Http) { }
 
   ngOnInit() {

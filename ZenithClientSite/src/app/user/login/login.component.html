@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="!authenticated">
   <h3 style="text-align: center">Login works!</h3>
   <form class="form-horizontal">
     <div class="form-group">
@@ -20,4 +20,8 @@
       </div>
     </div>
   </form>
+</div>
+<div *ngIf="authenticated">
+  <p>You are currently logged in as... {{username}}</p>
+  <button class="btn btn-default" (click)="logout()">Logout</button>
 </div>

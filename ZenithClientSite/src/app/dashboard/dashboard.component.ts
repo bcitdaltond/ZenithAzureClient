@@ -12,27 +12,37 @@ import { Events } from '../event';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  private events = Array();
+  authenticated: boolean;
+  public events = Array();
+  private date;
 
   constructor (private http: Http) {
+    if (localStorage.getItem('Usertoken')) {
+      this.authenticated = true;
+    } else {
+      this.authenticated = false;
+    }
+
+    this.buildarray();
+
     var headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    let concat = "Bearer " + localStorage.getItem("Usertoken");
+    //let concat = "Bearer " + localStorage.getItem("Usertoken");
     //console.log(concat);
-    headers.append('Authorization', concat);
+    //headers.append('Authorization', concat);
 
     this.http.get(
       "http://zenithsocietycore.azurewebsites.net/api/EventsApi",
       {headers: headers}
     ).map(res => res.json())
      .subscribe(data => {
+       console.log(data);
        for (var i = 0; i < data.length; i++) {
           var temp = new Events();
-          temp.ActivityId = data[i].activityId;
+          temp.ActivityId = data[i].activity.description;
           temp.CreatedBy = data[i].createdBy;
           temp.CreationDate = data[i].creationDate;
-          temp.End = data[i].endventId;
+          temp.End = data[i].end;
           temp.EventId = data[i].eventId;
           temp.IsActive = data[i].isActive;
           temp.Start = data[i].start;
@@ -64,6 +74,78 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  getMonth(month): string {
+    switch(month) {
+      case '01':
+        return "Jan";
+      case '02':
+        return "Feb";
+      case '03':
+        return "Mar";
+      case '04':
+        return "Apr";
+      case '05':
+        return "May";
+      case '06':
+        return "Jun";
+      case '07':
+        return "Jul";
+      case '08':
+        return "Aug";
+      case '09':
+        return "Sep";
+      case '10':
+        return "Oct";
+      case '11':
+        return "Nov";
+      case '12':
+        return "Dec";
+      default:
+    }
+  }
+
+
+  buildarray() {
+    
+    var week = Array()
+
+    var curr = new Date; // get current date
+    curr.setDate(14);
+    var first = curr.getDate() - curr.getDay();
+    console.log("today: " + curr.getDate() + " day of the week: " + curr.getDay());
+    console.log("first day of the week date: " + first)
+
+    for (var i = 0; i < 7; i++) {
+      var test = first + i;
+      var testdate = new Date(curr.setDate(test));
+
+      console.log("DAY " + (first + i) + " :" + testdate)
+      console.log("DAY OF WEEK: " + testdate.getDay());
+    }
+
+/*
+    var last = first + 6;
+
+
+    var firstday = new Date(curr.setDate(first)).toUTCString();
+    console.log("FIRSTDAY:" + firstday)
+    var lastday = new Date(curr.setDate(last)).toUTCString();
+    console.log("LASTDAY:" + lastday)
+
+    var testdate = "2017-03-26T03:20:02";
+    const [stuff1, stuff2] = testdate.split('T');
+    console.log(stuff1);
+    console.log(stuff2)
+    const [year, month, day] = stuff1.split('-');
+    console.log(year);
+    console.log(this.getMonth(month));
+    console.log(day);
+*/
+
+
+  }
+
 }
 
 /*
